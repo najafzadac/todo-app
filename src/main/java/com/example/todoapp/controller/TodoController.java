@@ -16,20 +16,19 @@ public class TodoController {
         return service.getAll();
     }
     @GetMapping("/{id}")
-    public ResponseEntity<Todo> getOne(@PathVariable Long id) {
-        return ResponseEntity.ok(service.getById(id));
+    public Todo getOne(@PathVariable Long id) {
+        return service.getById(id);
     }
     @PostMapping
-    public ResponseEntity<Todo> create(@RequestBody Todo todo) {
-        return ResponseEntity.ok(service.create(todo));
+    public Todo create(@RequestBody Todo todo) {
+        return service.create(todo);
     }
     @PutMapping("/{id}")
-    public ResponseEntity<Todo> update(@PathVariable Long id, @RequestBody Todo todo) {
-        return ResponseEntity.ok(service.update(id, todo));
+    public Todo update(@PathVariable Long id, @RequestBody Todo todo) {
+        return service.update(id, todo);
     }
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
+    public void delete(@PathVariable Long id) {
         service.delete(id);
-        return ResponseEntity.noContent().build();
     }
 }
