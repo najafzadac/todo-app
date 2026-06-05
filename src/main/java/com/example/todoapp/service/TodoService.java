@@ -1,5 +1,6 @@
 package com.example.todoapp.service;
 
+import com.example.todoapp.exceptions.TodoNotFoundex;
 import com.example.todoapp.model.Todo;
 import com.example.todoapp.repository.TodoRepository;
 import org.springframework.stereotype.Service;
@@ -15,9 +16,8 @@ public class TodoService {
     public List<Todo> getAll(){//gets all todo
         return repo.findAll();
     }
-    public Todo getById(Long id){//get one todo with id
-        return repo.findById(id).orElseThrow(()-> new RuntimeException("to do not found:"+ id));
-
+    public Todo getById(Long id) {
+        return repo.findById(id).orElseThrow(() -> new TodoNotFoundex(id));
     }
     public Todo create (Todo todo) {//create new todo
         return repo.save(todo);
